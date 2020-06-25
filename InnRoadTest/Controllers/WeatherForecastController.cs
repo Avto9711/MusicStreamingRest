@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using InnRoadTest.Bl.ViewModels;
+using InnRoadTest.Model.Context.InnRoadTest;
+using InnRoadTest.Model.Models;
+using InnRoadTest.Model.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -18,22 +23,23 @@ namespace InnRoadTest.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        protected readonly IUnitOfWork<IInnRoadTestDbContext> _uow;
+        private readonly IMapper _mapper;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IUnitOfWork<IInnRoadTestDbContext> uow, IMapper mapper)
         {
             _logger = logger;
+            _uow = uow;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<List<AlbumDto>> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            _logger.LogInformation("klk wawawa");
+            var list = await _uow.GetRepository<Album>().ListAsync();
+            var dto = _mapper.Map<List<AlbumDto>>(list);
+            return dto;
         }
     }
 }

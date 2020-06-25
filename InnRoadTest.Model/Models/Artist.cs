@@ -14,6 +14,7 @@ namespace InnRoadTest.Model.Models
         }
         public int Id { get ; set ; }
         public string Name { get; set; }
+        public string ArtistCover { get; set; }
 
         public bool Deleted { get ; set ; }
         public int? CreatedBy { get ; set ; }

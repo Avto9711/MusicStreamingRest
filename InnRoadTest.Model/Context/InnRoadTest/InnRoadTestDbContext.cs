@@ -1,12 +1,11 @@
-﻿using InnRoadTest.Model.Models;
+﻿using InnRoadTest.Model.Context.InnRoadTest;
+using InnRoadTest.Model.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace InnRoadTest.Model.Context
 {
-    public class InnRoadTestDbContext:DbContext
+    public class InnRoadTestDbContext:DbContext, IInnRoadTestDbContext
     {
 
         public InnRoadTestDbContext(DbContextOptions<InnRoadTestDbContext> options) : base(options)
@@ -21,5 +20,7 @@ namespace InnRoadTest.Model.Context
         public DbSet<Genre> Genres { get; set; }
         public DbSet<MusicLabel> MusicLabels { get; set; }
         public DbSet<Song> Songs { get; set; }
+        public DbSet<T> GetDbSet<T>() where T : class => Set<T>();
+
     }
 }

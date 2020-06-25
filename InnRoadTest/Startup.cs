@@ -2,7 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using InnRoadTest.Bl.Ioc;
 using InnRoadTest.Model.Context;
+using InnRoadTest.Model.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +39,22 @@ namespace InnRoadTest
                 opt.EnableSensitiveDataLogging();
             });
             services.AddControllers();
+
+            //var containerBuilder = new ContainerBuilder();
+            //containerBuilder.Populate(services);
+            //var container = containerBuilder.Build();
+            //var serviceProvider = new AutofacServiceProvider(container);
+
+            //serviceProvider.
+            //services.AddBlRegistry();
+            //services.AddModelRegistry();
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // Register your own things directly with Autofac, like:
+            builder.RegisterModule(new BlModule());
+            builder.RegisterModule(new ModelModule());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

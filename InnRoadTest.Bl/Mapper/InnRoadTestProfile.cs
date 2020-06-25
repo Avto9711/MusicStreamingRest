@@ -12,6 +12,12 @@ namespace InnRoadTest.Bl.Mapper
         public InnRoadTestProfile()
         {
             CreateMap<Album, AlbumDto>().ReverseMap();
+
+            CreateMap<Song, SongDto>()
+                .ForMember(y=>y.AlbumName, cfg=> cfg.MapFrom(y=>y.Album.Name))
+                .ReverseMap();
+
+
         }
     }
 }

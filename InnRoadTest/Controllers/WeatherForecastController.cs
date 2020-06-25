@@ -34,12 +34,9 @@ namespace InnRoadTest.Controllers
         }
 
         [HttpGet]
-        public async Task<List<AlbumDto>> Get()
+        public async Task<IActionResult> Get()
         {
-            _logger.LogInformation("klk wawawa");
-            var list = await _uow.GetRepository<Album>().ListAsync();
-            var dto = _mapper.Map<List<AlbumDto>>(list);
-            return dto;
+            return Ok(new { });
         }
     }
 }

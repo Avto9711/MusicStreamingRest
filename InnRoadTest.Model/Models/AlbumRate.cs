@@ -16,6 +16,10 @@ namespace InnRoadTest.Model.Models
         public double PointsGiven { get; set; }
         public string RateMesssage { get; set; }
 
+        //TODO: Maybe an user can do the review?
+        [NotMapped]
+        public int UserId { get; set; }
+
         [ForeignKey("Album")]
         public int AlbumId { get; set; }
         // user who created the rate

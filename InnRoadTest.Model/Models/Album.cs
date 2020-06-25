@@ -32,7 +32,7 @@ namespace InnRoadTest.Model.Models
         public int GenreId { get; set; }
         [NotMapped]
         public double AlbumAvgRating { get {
-                return (this.AlbumRates.Sum(y=>y.PointsGiven) / this.AlbumRates.Count);
+                return  this.AlbumRates.Count > 0 ? (this.AlbumRates.Sum(y=>y.PointsGiven) / this.AlbumRates.Count) : 0 ;
             }
         }
         public bool Deleted { get; set; }

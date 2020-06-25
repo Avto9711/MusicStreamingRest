@@ -6,5 +6,6 @@ namespace InnRoadTest.Core.Shared
 {
     public interface IBaseDto
     {
+        public int Id { get; set; }
     }
 }

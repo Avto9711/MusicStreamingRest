@@ -1,5 +1,6 @@
 ﻿using InnRoadTest.Model.Context.InnRoadTest;
 using InnRoadTest.Model.Models;
+using InnRoadTest.Model.Seed;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -22,5 +23,18 @@ namespace InnRoadTest.Model.Context
         public DbSet<Song> Songs { get; set; }
         public DbSet<T> GetDbSet<T>() where T : class => Set<T>();
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Genre>().HasData(SeedData.GenreSeed);
+            modelBuilder.Entity<MusicLabel>().HasData(SeedData.MusicLabelSeed);
+            modelBuilder.Entity<Artist>().HasData(SeedData.ArtistSeed);
+            modelBuilder.Entity<Album>().HasData(SeedData.AlbumSeed);
+            modelBuilder.Entity<AlbumMusicLabel>().HasData(SeedData.AlbumMusicLabelSeed);
+            modelBuilder.Entity<AlbumRate>().HasData(SeedData.AlbumRatesSeed);
+            modelBuilder.Entity<Song>().HasData(SeedData.SongsSeed);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -24,7 +24,5 @@ namespace InnRoadTest.Model.Models
         public int? CreatedBy { get ; set ; }
         public DateTime? CreatedDate { get ; set ; }
         public virtual Album Album { get; set; }
-        public virtual Artist Artist { get; set; }
-
     }
 }

@@ -16,8 +16,7 @@ namespace InnRoadTest.Test
         IInnRoadTestDbContext context;
         public BaseTestFixture()
         {
-            //context = AutofacContainer.Resolve<IInnRoadTestDbContext>();
-            //service = AutofacContainer.Resolve<IAlbumService>();
+
         }
 
         [OneTimeSetUp]

@@ -11,7 +11,7 @@ using System.Text;
 
 namespace InnRoadTest.Bl.Services.SongService
 {
-    public class SongService : BaseControllerService<Song, SongDto>, ISongService<Song, SongDto>
+    public class SongService : BaseCrudService<Song, SongDto>, ISongService, IBaseCrudService<Song, SongDto>
     {
         public SongService(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow) : base(mapper, uow)
         {

@@ -11,7 +11,7 @@ namespace InnRoadTest.Model.Context
 
         public InnRoadTestDbContext(DbContextOptions<InnRoadTestDbContext> options) : base(options)
         {
-
+            //AddRange
         }
 
         public DbSet<Album> Albums { get; set; }

@@ -7,8 +7,6 @@ using System.Text;
 
 namespace InnRoadTest.Bl.Services.SongService
 {
-    public interface ISongService<TEntity, TDto> : IBaseControllerService<TEntity, TDto>
-    where TEntity : class, IBaseEntity
-    where TDto : class, IBaseDto
+    public interface ISongService
     { }
 }

@@ -56,7 +56,6 @@ namespace InnRoadTest
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            // Register your own things directly with Autofac, like:
             builder.RegisterModule(new BlModule());
             builder.RegisterModule(new ModelModule());
         }

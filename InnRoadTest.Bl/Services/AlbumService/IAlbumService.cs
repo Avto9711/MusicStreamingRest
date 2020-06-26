@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 
 namespace InnRoadTest.Bl.Services.AlbumService
 {
-    public interface IAlbumService<TEntity, TDto> : IBaseControllerService<TEntity, TDto>
-    where TEntity : class, IBaseEntity
-    where TDto : class, IBaseDto
+    public interface IAlbumService
     {
         Task<List<SongDto>> GetAlbumTracks(int albumId);
     }

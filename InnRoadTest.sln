@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnRoadTest.Model", "InnRoa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnRoadTest.Core", "InnRoadTest.Core\InnRoadTest.Core.csproj", "{88CC3CAF-1457-4B45-9133-0BBABEBADBA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnRoadTest.Bl", "InnRoadTest.Bl\InnRoadTest.Bl.csproj", "{527144C0-6D24-4DC9-A646-BAFBF0C5D9AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnRoadTest.Bl", "InnRoadTest.Bl\InnRoadTest.Bl.csproj", "{527144C0-6D24-4DC9-A646-BAFBF0C5D9AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnRoadTest.Test", "InnRoadTest.Test\InnRoadTest.Test.csproj", "{B7FF37B4-0218-4F13-AD16-3B36D56AF44A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{527144C0-6D24-4DC9-A646-BAFBF0C5D9AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{527144C0-6D24-4DC9-A646-BAFBF0C5D9AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{527144C0-6D24-4DC9-A646-BAFBF0C5D9AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7FF37B4-0218-4F13-AD16-3B36D56AF44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7FF37B4-0218-4F13-AD16-3B36D56AF44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7FF37B4-0218-4F13-AD16-3B36D56AF44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7FF37B4-0218-4F13-AD16-3B36D56AF44A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

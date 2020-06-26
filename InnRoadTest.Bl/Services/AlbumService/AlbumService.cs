@@ -13,7 +13,7 @@ using InnRoadTest.Core.Specification;
 
 namespace InnRoadTest.Bl.Services.AlbumService
 {
-    public class AlbumService : BaseControllerService<Album, AlbumDto>, IAlbumService<Album, AlbumDto>
+    public class AlbumService :  BaseCrudService<Album, AlbumDto>, IBaseCrudService<Album, AlbumDto>, IAlbumService
     {
         public AlbumService(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow) : base(mapper, uow)
         {

@@ -18,10 +18,10 @@ namespace InnRoadTest.Controllers
         where TEntity :  class, IBaseEntity
         where TDto : class, IBaseDto
     {
-        protected readonly IBaseControllerService<TEntity, TDto> BaseControllerService;
+        protected readonly IBaseCrudService<TEntity, TDto> BaseControllerService;
 
 
-        public BaseController(IBaseControllerService<TEntity, TDto> baseControllerService)
+        public BaseController(IBaseCrudService<TEntity, TDto> baseControllerService)
         {
             BaseControllerService = baseControllerService;
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InnRoadTest.Bl.Services.GetEntities
 {
-    public interface IBaseControllerService<TEntity, TDto>
+    public interface IBaseCrudService<TEntity, TDto>
         where TEntity : class, IBaseEntity
         where TDto : class, IBaseDto
     {

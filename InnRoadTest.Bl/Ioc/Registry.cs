@@ -7,14 +7,6 @@ using System;
 
 namespace InnRoadTest.Bl.Ioc
 {
-    //public static class Registry
-    //{
-    //    public static void AddBlRegistry(this IServiceCollection services)
-    //    {
-    //        services.AddAutoMapper(typeof(InnRoadTestProfile));
-    //    }
-    //}
-
     public class BlModule : Module
     {
         protected override void Load(ContainerBuilder builder)
@@ -24,7 +16,7 @@ namespace InnRoadTest.Bl.Ioc
 
             //https://stackoverflow.com/questions/16757945/how-to-register-many-for-open-generic-in-autofac
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
-                               .AsClosedTypesOf(typeof(IBaseControllerService<,>)).AsImplementedInterfaces();
+                               .AsClosedTypesOf(typeof(IBaseCrudService<,>)).AsImplementedInterfaces();
         }
     }
 }

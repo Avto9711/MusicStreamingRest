@@ -15,20 +15,25 @@ namespace InnRoadTest.Controllers
 {
     public class AlbumsController : BaseController<Album, AlbumDto>
     {
-        private IAlbumService<Album, AlbumDto> _baseControllerService;
-        public AlbumsController(IAlbumService<Album, AlbumDto> baseControllerService) : base(baseControllerService)
+        private readonly IAlbumService _albumService;
+        public AlbumsController(IBaseCrudService<Album, AlbumDto> baseControllerService, IAlbumService albumService) : base(baseControllerService)
         {
-            _baseControllerService = baseControllerService;
+            _albumService = albumService;
         }
+        //private IAlbumService _baseControllerService;
+        ////public AlbumsController(IAlbumService<Album, AlbumDto> baseControllerService) : base(baseControllerService)
+        //{
+        //    _baseControllerService = baseControllerService;
+        //}
 
         [HttpGet]
-        public async override  Task<IActionResult> Get()
+        public async override Task<IActionResult> Get()
         {
-            return Ok(await _baseControllerService.GetEntities(x => x.Artist, x => x.AlbumRates, x=>x.Genre));
+            return Ok(await BaseControllerService.GetEntities(x => x.Artist, x => x.AlbumRates, x => x.Genre));
         }
 
         [HttpGet("{id}")]
-        public async override  Task<IActionResult> GetById(int id)
+        public async override Task<IActionResult> GetById(int id)
         {
             var dto = await BaseControllerService.GetById(id, x => x.Artist, x => x.AlbumRates, x => x.Genre);
 
@@ -39,11 +44,10 @@ namespace InnRoadTest.Controllers
         }
 
         [HttpGet("{albumId}/songs")]
-        public async  Task<IActionResult> GetAlbumSongs(int albumId)
+        public async Task<IActionResult> GetAlbumSongs(int albumId)
         {
-            var dto = await _baseControllerService.GetAlbumTracks(albumId);
+            var dto = await _albumService.GetAlbumTracks(albumId);
             return Ok(dto);
         }
-
     }
 }

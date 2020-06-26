@@ -14,14 +14,14 @@ using System.Threading.Tasks;
 
 namespace InnRoadTest.Bl.Services.BaseControllerService
 {
-    public class BaseControllerService<TEntity, TDto> : IBaseControllerService<TEntity, TDto>
+    public class BaseCrudService<TEntity, TDto> : IBaseCrudService<TEntity, TDto>
     where TEntity : class, IBaseEntity
     where TDto : class, IBaseDto
     {
         public IMapper Mapper { get; set; }
         protected readonly IUnitOfWork<IInnRoadTestDbContext> _uow;
         protected readonly IBaseRepository<TEntity> _repository;
-        public BaseControllerService(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow)
+        public BaseCrudService(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow)
         {
             Mapper = mapper;
             _uow = uow;

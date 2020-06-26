@@ -12,25 +12,21 @@ using System.Threading.Tasks;
 
 namespace InnRoadTest.Test.Services
 {
-    public class AlbumServiceTest: BaseTest
+ 
+    public class AlbumServiceTest: BaseTestFixture
     {
-        IInnRoadTestDbContext context;
         IAlbumService service;
-        public AlbumServiceTest()
+        public AlbumServiceTest():base()
         {
-            context = AutofacContainer.Resolve<IInnRoadTestDbContext>();
             service = AutofacContainer.Resolve<IAlbumService>();
-            LoadSeedData(context);
-
         }
+
         [Test]
         public async Task GetAlbumTracksByAlbumIdTest()
         {
-           
-            var albumSet = context.GetDbSet<Genre>();
-            var responseList = albumSet.ToList();
-            var response = await service.GetAlbumTracks(1);
-            Assert.GreaterOrEqual(1, 1);
+            var tracks = await service.GetAlbumTracks(1);
+            Assert.AreEqual(tracks.Count, 12);
         }
+
     }
 }

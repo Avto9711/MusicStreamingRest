@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InnRoadTest.Bl\InnRoadTest.Bl.csproj" />
-    <ProjectReference Include="..\InnRoadTest.Model\InnRoadTest.Model.csproj" />
   </ItemGroup>
 
 

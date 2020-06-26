@@ -1,16 +1,16 @@
 
 
-# MusicStramingRest
+# MusicStreamingRest
 
 
 ##### Technologies
-* :radio_button: ASP .Net Core 3.1
-* :radio_button: Swagger
-* :radio_button: AutoFac
-* :radio_button: AutoMapper
-* :radio_button: NLog
-* :radio_button: NUnit Test
-* :radio_button: EF Core
+ :radio_button: ASP .Net Core 3.1
+ :radio_button: Swagger
+ :radio_button: AutoFac
+ :radio_button: AutoMapper
+ :radio_button: NLog
+ :radio_button: NUnit Test
+ :radio_button: EF Core
 
 
 ## Installation

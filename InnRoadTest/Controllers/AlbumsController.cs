@@ -38,5 +38,12 @@ namespace InnRoadTest.Controllers
             return Ok(dto);
         }
 
+        [HttpGet("{albumId}/songs")]
+        public async  Task<IActionResult> GetAlbumSongs(int albumId)
+        {
+            var dto = await _baseControllerService.GetAlbumTracks(albumId);
+            return Ok(dto);
+        }
+
     }
 }

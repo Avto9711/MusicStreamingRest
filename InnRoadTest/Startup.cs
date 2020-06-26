@@ -44,14 +44,6 @@ namespace InnRoadTest
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
-            //var containerBuilder = new ContainerBuilder();
-            //containerBuilder.Populate(services);
-            //var container = containerBuilder.Build();
-            //var serviceProvider = new AutofacServiceProvider(container);
-
-            //serviceProvider.
-            //services.AddBlRegistry();
-            //services.AddModelRegistry();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)

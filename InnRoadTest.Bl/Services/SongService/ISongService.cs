@@ -8,5 +8,7 @@ using System.Text;
 namespace InnRoadTest.Bl.Services.SongService
 {
     public interface ISongService
-    { }
+    { 
+       
+    }
 }

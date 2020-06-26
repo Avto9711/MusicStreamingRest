@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace InnRoadTest.Controllers
 {
+    //NOTE: We can use fluent validation within a middleware to validate entities :D
     [Produces("application/json")]
     [Route("api/[controller]")]
     public abstract class BaseController<TEntity, TDto>: ControllerBase 

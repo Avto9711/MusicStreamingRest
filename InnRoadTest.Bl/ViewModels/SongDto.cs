@@ -14,6 +14,5 @@ namespace InnRoadTest.Bl.ViewModels
         public TimeSpan Duration { get; set; }
         public double Price { get; set; }
         public double Popularity { get; set; }
-        public int? UpdatedBy { get; set; }
     }
 }

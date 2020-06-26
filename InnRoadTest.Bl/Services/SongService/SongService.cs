@@ -5,16 +5,22 @@ using InnRoadTest.Bl.ViewModels;
 using InnRoadTest.Model.Models;
 using InnRoadTest.Model.Context.InnRoadTest;
 using InnRoadTest.Model.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using InnRoadTest.Model.Repositories.SongRepository;
 
 namespace InnRoadTest.Bl.Services.SongService
 {
+
     public class SongService : BaseCrudService<Song, SongDto>, ISongService, IBaseCrudService<Song, SongDto>
     {
-        public SongService(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow) : base(mapper, uow)
+        ISongRepository _songRepo;
+        public SongService(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow, ISongRepository songRepo) : base(mapper, uow)
         {
+            _songRepo = songRepo;
+        }
+
+        public void ReproduceSong(Song song)
+        {
+            _songRepo.ReproduceSong(song);
         }
     }
 }

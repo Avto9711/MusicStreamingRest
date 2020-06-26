@@ -3,6 +3,7 @@ using AutoMapper;
 using InnRoadTest.Bl.Mapper;
 using InnRoadTest.Bl.Services.BaseControllerService;
 using InnRoadTest.Bl.Services.GetEntities;
+using InnRoadTest.Model.Repositories.SongRepository;
 using System;
 
 namespace InnRoadTest.Bl.Ioc
@@ -17,6 +18,10 @@ namespace InnRoadTest.Bl.Ioc
             //https://stackoverflow.com/questions/16757945/how-to-register-many-for-open-generic-in-autofac
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
                                .AsClosedTypesOf(typeof(IBaseCrudService<,>)).AsImplementedInterfaces();
+
+
+            builder.RegisterType<SongRepository>().As<ISongRepository>().InstancePerLifetimeScope();
+
         }
     }
 }

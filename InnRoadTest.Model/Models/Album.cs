@@ -35,6 +35,14 @@ namespace InnRoadTest.Model.Models
                 return  this.AlbumRates.Count > 0 ? (this.AlbumRates.Sum(y=>y.PointsGiven) / this.AlbumRates.Count) : 0 ;
             }
         }
+        [NotMapped]
+        public double AlbumAvgTotal
+        {
+            get
+            {
+                return this.AlbumRates.Count;
+            }
+        }
         public bool Deleted { get; set; }
         public int? CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }

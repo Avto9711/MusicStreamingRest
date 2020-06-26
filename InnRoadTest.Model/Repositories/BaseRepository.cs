@@ -69,5 +69,24 @@ namespace InnRoadTest.Model.Base
             return await secondaryResult.ToListAsync();
         }
 
+        public  IQueryable<T> SpecAsQueryable(ISpecification<T> spec)
+        {
+            var queryableResultWithIncludes = spec.Includes
+                .Aggregate(_dbSet.AsQueryable(),
+                    (current, include) => current.Include(include));
+
+            // modify the IQueryable to include any string-based include statements
+            var secondaryResult = spec.IncludeStrings
+                .Aggregate(queryableResultWithIncludes,
+                    (current, include) => current.Include(include));
+
+            if (spec.Criteria != null)
+                secondaryResult = secondaryResult
+                            .Where(spec.Criteria).AsQueryable();
+
+            // return the result of the query using the specification's criteria expression
+            return  secondaryResult.AsQueryable();
+        }
+
     }
 }

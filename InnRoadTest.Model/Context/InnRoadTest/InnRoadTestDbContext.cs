@@ -3,6 +3,8 @@ using InnRoadTest.Model.Models;
 using InnRoadTest.Model.Seed;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace InnRoadTest.Model.Context
 {
@@ -35,6 +37,12 @@ namespace InnRoadTest.Model.Context
             modelBuilder.Entity<Song>().HasData(SeedData.SongsSeed);
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public  override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            //Run Audit Fields here to Save 
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

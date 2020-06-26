@@ -14,9 +14,7 @@ namespace InnRoadTest.Controllers
 {
     public class SongsController : BaseController<Song, SongDto>
     {
-        //public SongsController(ISongService baseControllerService) : base(baseControllerService)
-        //{
-        //}
+
         public SongsController(IBaseCrudService<Song, SongDto> baseControllerService) : base(baseControllerService)
         {
         }

@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using InnRoadTest.Core.Specification;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace InnRoadTest.Bl.Services.AlbumService
 {
@@ -17,6 +19,18 @@ namespace InnRoadTest.Bl.Services.AlbumService
     {
         public AlbumService(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow) : base(mapper, uow)
         {
+        }
+
+        public async Task<List<MusicLabelDto>> GetAlbumMusicLabels(int albumId)
+        {
+            var spec = new BaseSpecification<AlbumMusicLabel>(x => x.AlbumId == albumId);
+            spec.AddInclude(x => x.MusicLabel);
+
+            var albumMLabelRepo = _uow.GetRepository<AlbumMusicLabel>();
+            var albumMLabelsQuery =  albumMLabelRepo.SpecAsQueryable(spec);
+            var musicLabels = await albumMLabelsQuery.Select(y => y.MusicLabel).ToListAsync();
+            var dto = Mapper.Map<List<MusicLabelDto>>(musicLabels);
+            return dto;
         }
 
         public async Task<List<SongDto>> GetAlbumTracks(int albumId)

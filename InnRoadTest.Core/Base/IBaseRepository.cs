@@ -2,6 +2,7 @@
 using InnRoadTest.Core.Specification;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,8 @@ namespace InnRoadTest.Core.Base
         public void Update(T entity);
         public void Delete(T entity);
         public Task<IList<T>> ListAsync(ISpecification<T> spec);
+        public IQueryable<T> SpecAsQueryable(ISpecification<T> spec);
+
 
     }
 }

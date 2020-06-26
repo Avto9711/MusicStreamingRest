@@ -18,6 +18,7 @@ namespace InnRoadTest.Bl.ViewModels
         public int GenreId { get; set; }
         public string GenreName { get; set; }
         public double AlbumAvgRating { get; set; } = 0;
+        public int AlbumAvgTotal { get; set; } = 0;
 
     }
 }

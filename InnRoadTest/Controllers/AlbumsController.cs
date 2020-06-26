@@ -20,11 +20,6 @@ namespace InnRoadTest.Controllers
         {
             _albumService = albumService;
         }
-        //private IAlbumService _baseControllerService;
-        ////public AlbumsController(IAlbumService<Album, AlbumDto> baseControllerService) : base(baseControllerService)
-        //{
-        //    _baseControllerService = baseControllerService;
-        //}
 
         [HttpGet]
         public async override Task<IActionResult> Get()
@@ -35,7 +30,7 @@ namespace InnRoadTest.Controllers
         [HttpGet("{id}")]
         public async override Task<IActionResult> GetById(int id)
         {
-            var dto = await BaseControllerService.GetById(id, x => x.Artist, x => x.AlbumRates, x => x.Genre);
+            var dto = await BaseControllerService.GetById(id, x => x.Artist, x => x.AlbumRates, x => x.Genre, x=>x.AlbumMusicLabels);
 
             if (dto is null)
                 return NotFound();
@@ -47,6 +42,13 @@ namespace InnRoadTest.Controllers
         public async Task<IActionResult> GetAlbumSongs(int albumId)
         {
             var dto = await _albumService.GetAlbumTracks(albumId);
+            return Ok(dto);
+        }
+
+        [HttpGet("{albumId}/musiclabels")]
+        public async Task<IActionResult> GetAlbumMusicLabels(int albumId)
+        {
+            var dto = await _albumService.GetAlbumMusicLabels(albumId);
             return Ok(dto);
         }
     }

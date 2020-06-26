@@ -119,6 +119,7 @@ namespace InnRoadTest.Model.Seed
                         Id = 1,
                         Name ="Don't Go Breaking My Heart",
                         Price = 1.29,
+                        Duration = new TimeSpan(0,3,36),
                         Popularity = 5,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -128,6 +129,7 @@ namespace InnRoadTest.Model.Seed
                         Id = 2,
                         Name ="Nobody Else",
                         Price = 1.29,
+                        Duration = new TimeSpan(0,3,38),
                         Popularity = 5,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -138,6 +140,7 @@ namespace InnRoadTest.Model.Seed
                         Id = 3,
                         Name ="Breathe",
                         Popularity = 5,
+                        Duration = new TimeSpan(0,3,06),
                         Price = 1.29,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -148,6 +151,7 @@ namespace InnRoadTest.Model.Seed
                     {
                         Id = 4,
                         Name ="New Love",
+                        Duration = new TimeSpan(0,3,00),
                         Price = 1.29,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -157,6 +161,7 @@ namespace InnRoadTest.Model.Seed
                     {
                         Id = 5,
                         Name ="Passionate",
+                        Duration = new TimeSpan(0,3,43),
                         Price = 1.29,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -166,6 +171,7 @@ namespace InnRoadTest.Model.Seed
                     {
                         Id = 6,
                         Name ="Is Just Me",
+                        Duration = new TimeSpan(0,3,37),
                         Price = 1.29,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -175,6 +181,7 @@ namespace InnRoadTest.Model.Seed
                     {
                         Id = 7,
                         Name ="Chances",
+                        Duration = new TimeSpan(0,2,53),
                         Price = 1.29,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -184,6 +191,7 @@ namespace InnRoadTest.Model.Seed
                     {
                         Id = 8,
                         Name ="No Place",
+                        Duration = new TimeSpan(0,2,59),
                         Price = 1.29,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -193,6 +201,7 @@ namespace InnRoadTest.Model.Seed
                     {
                         Id = 9,
                         Name ="Chateau",
+                        Duration = new TimeSpan(0,3,08),
                         Price = 1.29,
                         CreatedDate = NowDate,
                         AlbumId = 1
@@ -203,6 +212,8 @@ namespace InnRoadTest.Model.Seed
                         Id = 10,
                         Name ="The Way It Was",
                         Price = 1.29,
+                        Duration = new TimeSpan(0,3,26),
+
                         CreatedDate = NowDate,
                         AlbumId = 1
 
@@ -212,6 +223,8 @@ namespace InnRoadTest.Model.Seed
                         Id = 11,
                         Name ="Just Like You Like It",
                         Price = 1.29,
+                        Duration = new TimeSpan(0,3,42),
+
                         CreatedDate = NowDate,
                         AlbumId = 1
 
@@ -221,6 +234,8 @@ namespace InnRoadTest.Model.Seed
                         Id = 12,
                         Name ="Ok",
                         Price = 1.29,
+                        Duration = new TimeSpan(0,3,31),
+
                         CreatedDate = NowDate,
                         AlbumId = 1
 

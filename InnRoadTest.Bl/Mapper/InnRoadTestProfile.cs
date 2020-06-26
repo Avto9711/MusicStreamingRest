@@ -16,6 +16,9 @@ namespace InnRoadTest.Bl.Mapper
                 .ForMember(y => y.GenreName, cfg => cfg.MapFrom(y => y.Genre.Name))
             .ReverseMap();
 
+            CreateMap<MusicLabel, MusicLabelDto>()
+             .ReverseMap();
+            
             CreateMap<Song, SongDto>()
                 .ForMember(y=>y.AlbumName, cfg=> cfg.MapFrom(y=>y.Album.Name))
                 .ReverseMap();

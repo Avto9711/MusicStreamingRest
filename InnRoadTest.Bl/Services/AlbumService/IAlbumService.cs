@@ -11,5 +11,6 @@ namespace InnRoadTest.Bl.Services.AlbumService
     public interface IAlbumService
     {
         Task<List<SongDto>> GetAlbumTracks(int albumId);
+        Task<List<MusicLabelDto>> GetAlbumMusicLabels(int albumId);
     }
 }

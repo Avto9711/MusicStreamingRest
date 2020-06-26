@@ -4,7 +4,7 @@
 
 
 ##### Technologies
- :radio_button: ASP .Net Core 3.1
+ :radio_button: .Net Core 3.1
  :radio_button: Swagger
  :radio_button: AutoFac
  :radio_button: AutoMapper

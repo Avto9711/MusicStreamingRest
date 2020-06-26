@@ -7,12 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InnRoadTest.Bl.Services.GetEntities;
+using InnRoadTest.Bl.Services.SongService;
 
 namespace InnRoadTest.Controllers
 {
     public class SongsController : BaseController<Song, SongDto>
     {
-        public SongsController(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow) : base(mapper, uow)
+        public SongsController(ISongService<Song, SongDto> baseControllerService) : base(baseControllerService)
         {
         }
     }

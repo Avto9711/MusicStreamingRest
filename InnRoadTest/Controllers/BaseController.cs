@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using InnRoadTest.Bl.Services.GetEntities;
 using InnRoadTest.Core.Base;
 using InnRoadTest.Core.Shared;
 using InnRoadTest.Model.Context.InnRoadTest;
@@ -17,17 +18,12 @@ namespace InnRoadTest.Controllers
         where TEntity :  class, IBaseEntity
         where TDto : class, IBaseDto
     {
-        public IMapper Mapper { get; set; }
-        protected readonly IUnitOfWork<IInnRoadTestDbContext> _uow;
-        protected readonly IBaseRepository<TEntity> _repository;
+        protected readonly IBaseControllerService<TEntity, TDto> BaseControllerService;
 
 
-        public BaseController(IMapper mapper, IUnitOfWork<IInnRoadTestDbContext> uow)
+        public BaseController(IBaseControllerService<TEntity, TDto> baseControllerService)
         {
-             Mapper = mapper;
-            _uow = uow;
-            _repository = _uow.GetRepository<TEntity>();
-
+            BaseControllerService = baseControllerService;
         }
 
         /// <summary>
@@ -37,8 +33,7 @@ namespace InnRoadTest.Controllers
         [HttpGet]
         public async virtual Task<IActionResult> Get()
         {
-            var list = await _repository.ListAsync();
-            var dto =  Mapper.Map<IList<TDto>>(list);
+            var dto = await BaseControllerService.GetEntities();
             return Ok(dto);
         }
 
@@ -51,14 +46,9 @@ namespace InnRoadTest.Controllers
         [HttpGet("{id}")]
         public async virtual Task<IActionResult> GetById(int id)
         {
-            TEntity entity = await _repository.GetByIdAsync(id);
-
-            if (entity is null)
+            TDto dto = await BaseControllerService.GetById(id);
+            if (dto is null)
                 return NotFound();
-
-            TEntity result = await Task.FromResult(entity);
-
-            TDto dto = Mapper.Map<TDto>(result);
 
             return Ok(dto);
         }
@@ -70,12 +60,7 @@ namespace InnRoadTest.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> Post([FromBody] TDto entityDto)
         {
-            TEntity entity = Mapper.Map<TEntity>(entityDto);
-
-            _repository.Add(entity);
-            await _uow.Commit();
-
-            entityDto = Mapper.Map<TDto>(entity);
+            entityDto = await BaseControllerService.CreateEntity(entityDto);
 
             return Created(this.ControllerContext.HttpContext.Request.Host.Value,entityDto);
         }
@@ -87,20 +72,11 @@ namespace InnRoadTest.Controllers
         [HttpPut("{id}")]
         public virtual async Task<IActionResult> Put([FromRoute]int id, [FromBody] TDto entityDto)
         {
-            if (entityDto.Id != id)
+            TDto response = await BaseControllerService.UpdateEntity(id, entityDto);
+            if (response is null)
                 return BadRequest();
 
-            TEntity entity = await _repository.GetByIdAsync(id);
-            if (entity is null)
-                return NotFound();
-
-            Mapper.Map(entityDto, entity);
-
-            _repository.Update(entity);
-
-            await _uow.Commit();
-
-            return Ok(Mapper.Map(entity, entityDto));
+            return Ok(response);
         }
 
         /// <summary>
@@ -111,16 +87,10 @@ namespace InnRoadTest.Controllers
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            TEntity entity = await _repository.GetByIdAsync(id);
+            TDto entityDto = await BaseControllerService.DeleteEntity(id);
 
-            if (entity is null)
+            if (entityDto is null)
                 return NotFound();
-
-            _repository.Delete(entity);
-            await _uow.Commit();
-
-            TDto entityDto = Mapper.Map<TDto>(entity);
-
             return Ok(entityDto);
         }
     }

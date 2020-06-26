@@ -13,8 +13,10 @@ namespace InnRoadTest.Bl.ViewModels
         public string Review { get; set; }
         public double Price { get; set; }
         public int ArtistId { get; set; }
+        public string ArtistName { get; set; }
         public DateTime ReleaseDate { get; set; }
         public int GenreId { get; set; }
+        public string GenreName { get; set; }
         public double AlbumAvgRating { get; set; } = 0;
 
     }

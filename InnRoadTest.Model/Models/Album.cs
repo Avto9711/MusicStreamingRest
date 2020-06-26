@@ -36,7 +36,7 @@ namespace InnRoadTest.Model.Models
             }
         }
         [NotMapped]
-        public double AlbumAvgTotal
+        public double AlbumReviewsTotal
         {
             get
             {
